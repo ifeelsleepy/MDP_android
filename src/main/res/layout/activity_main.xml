@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="169dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="Title"
+        android:scaleType="fitXY"
+        android:src="@drawable/title" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@android:color/black" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:fontFamily="sans-serif-light"
+        android:onClick="manageBTconn"
+        android:text="Bluetooth Connection"
+        android:textSize="25dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@android:color/black" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:fontFamily="sans-serif-light"
+        android:onClick="manageBTcomm"
+        android:text="Bluetooth Communication"
+        android:textSize="25dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@android:color/black" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:fontFamily="sans-serif-light"
+        android:onClick="mapUI"
+        android:text="View Map UI"
+        android:textSize="25dp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@android:color/black" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:fontFamily="sans-serif-light"
+        android:onClick="end"
+        android:text="End"
+        android:textSize="25dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@android:color/black" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="293dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="Background"
+        android:scaleType="fitXY"
+        android:src="@drawable/walle2" />
+
+
+</LinearLayout>

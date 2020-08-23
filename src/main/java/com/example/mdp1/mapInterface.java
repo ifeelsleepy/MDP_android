@@ -1,4 +1,6 @@
 package com.example.mdp1;
 
-public class mapInterface {
+import android.app.Activity;
+
+public class mapInterface extends Activity {
 }

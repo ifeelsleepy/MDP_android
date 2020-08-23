@@ -1,4 +1,6 @@
 package com.example.mdp1;
 
-public class BluetoothCommunication {
+import android.app.Activity;
+
+public class BluetoothCommunication extends Activity {
 }

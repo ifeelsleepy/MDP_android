@@ -3,6 +3,14 @@ package com.example.mdp1;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
+
+import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.IBinder;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -14,7 +22,11 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
+
+    //for connection to BluetoothService
+    private boolean bound = false;
+    private BluetoothService bluetoothService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +56,38 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onStart(){
+        super.onStart();
+        //Bind this activity to BluetoothService
+        Intent intent = new Intent(this, BluetoothService.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        if (bluetoothService!= null)
+            bluetoothService.startToast();
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        //bluetoothService.stopToast();
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        //bluetoothService.stopToast();
+        if (bound){
+            unbindService(connection);
+            bound = false;
+        }
+    }
+
+
     public void manageBTconn(View v){
 
         Intent intent = new Intent(this, BluetoothConnection.class);
@@ -66,4 +110,19 @@ public class MainActivity extends AppCompatActivity {
         this.onStop();
         this.finish();
     }
+
+    private ServiceConnection connection = new ServiceConnection(){
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder binder){
+            BluetoothService.BluetoothBinder bluetoothBinder =
+                    (BluetoothService.BluetoothBinder) binder;
+            bluetoothService = bluetoothBinder.getBluetooth();
+            bound = true;
+            bluetoothService.startToast();
+        }
+        @Override
+        public void onServiceDisconnected(ComponentName name){
+            bound = false;
+        }
+    };
 }

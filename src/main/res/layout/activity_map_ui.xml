@@ -1,0 +1,289 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:focusableInTouchMode="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <com.example.mdp1.PixelGridView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" 
+        android:layout_weight="6"
+		 />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+        	android:layout_weight="2"
+        	android:orientation="horizontal">
+
+			<ImageButton
+				android:id="@+id/buttonUp"
+				android:layout_width="19dp"
+				android:layout_height="match_parent"
+				android:layout_weight="2"
+				android:background="@null"
+				android:paddingTop="20dp"
+				android:paddingBottom="20dp"
+				android:scaleType="centerInside"
+				android:src="@drawable/up" />
+				<!-- android:onClick="onForwardBtnClick"-->
+
+
+			<ImageButton
+				android:id="@+id/buttonStart"
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:background="@null"
+				android:onClick="onExploreBtnClick"
+				android:scaleType="centerInside"
+				android:src="@drawable/start" />
+
+			<ImageButton
+				android:id="@+id/buttonFast"
+				android:layout_width="29dp"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:background="@null"
+				android:onClick="onShortestBtnClick"
+				android:paddingLeft="15dp"
+				android:scaleType="centerInside"
+				android:src="@drawable/fast" />
+
+			<Switch
+				android:id="@+id/tiltSwitch"
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:paddingRight="5dp"
+				android:textOff="Tilt Off"
+				android:textOn="Tilt On" />
+		   	    <!--android:onClick="onTiltSwitchClick"-->
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+        	android:layout_weight="1"
+        	android:orientation="horizontal">
+            
+            <ImageButton
+		        android:id="@+id/buttonLeft"
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:scaleType="centerInside"
+				android:background="@null"
+		        android:src="@drawable/left"/>
+		        <!-- android:onClick="onLeftBtnClick"-->    
+	
+		   	<ImageButton
+		   	    android:id="@+id/buttonRight"
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:scaleType="centerInside"
+				android:background="@null"
+		   	    android:src="@drawable/right" />
+		   	    <!-- android:onClick="onRightBtnClick"-->
+
+
+			<Switch
+				android:id="@+id/updateSwitch"
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+
+				android:onClick="onUpdateSwitchClick"
+				android:paddingRight="15dp"
+				android:textOff="Manual"
+				android:textOn="Auto" />
+	   	
+		   	<ImageButton
+		        android:id="@+id/buttonRefresh"
+		        android:layout_width="0dp"
+		        android:layout_height="match_parent"
+		        android:layout_weight="1"
+		        android:scaleType="centerInside"
+				android:background="@null"
+				android:onClick="onManualUpdateBtnClick"
+		        android:src="@drawable/refresh" />
+		   	
+			<Button
+			    android:layout_width="0dp"
+		        android:layout_height="match_parent"
+		        android:layout_weight="1"
+				android:text="BT On"
+				android:textAppearance="?android:attr/textAppearanceSmall" 
+				android:onClick="enableBTBtnClick"/>
+            
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+        	android:layout_weight="2"
+        	android:orientation="horizontal">
+            
+            <LinearLayout
+	            android:layout_width="0dp"
+		   	    android:layout_height="match_parent"
+		   	    android:orientation="vertical"
+		   	    android:layout_weight="1">
+			
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginStart="3dp">
+
+					<TextView
+						android:id="@+id/textViewX"
+						android:layout_width="32dp"
+						android:layout_height="wrap_content"
+						android:text="X:" />
+
+				   	<EditText
+				   	    android:id="@+id/editTextX"
+				   	    android:layout_width="wrap_content"
+				   	    android:layout_height="wrap_content"
+				   	    android:inputType="number"
+				   	    android:text="2"/>
+                    
+                </LinearLayout>
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginStart="3dp">
+
+					<TextView
+						android:id="@+id/textViewY"
+						android:layout_width="32dp"
+						android:layout_height="wrap_content"
+						android:text="Y:" />
+
+				   	<EditText
+				   	    android:id="@+id/editTextY"
+				   	    android:layout_width="wrap_content"
+				   	    android:layout_height="wrap_content"
+				   	    android:inputType="number"
+				   	    android:text="2"/>
+                    
+                </LinearLayout>
+                
+   	    	</LinearLayout>
+   	    	
+            <LinearLayout
+	            android:layout_width="0dp"
+		   	    android:layout_height="match_parent"
+		   	    android:orientation="vertical"
+		   	    android:layout_weight="1">
+
+				<ImageButton
+					android:id="@+id/buttonPos"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:background="@null"
+					android:onClick="onSendCoordBtnClick"
+					android:paddingTop="17dp"
+					android:paddingRight="10dp"
+					android:scaleType="fitStart"
+					android:src="@drawable/position" />
+
+			</LinearLayout>
+   	    	
+            <ScrollView
+                android:layout_width="0dp"
+			   	android:layout_height="match_parent"
+			   	android:layout_weight="2">
+                
+	            <LinearLayout
+		            android:layout_width="match_parent"
+			   	    android:layout_height="wrap_content"
+			   	    android:orientation="vertical">
+				
+	                <TextView
+				 	    android:id="@+id/textViewConnect"
+				 	    android:layout_width="match_parent"
+				 	    android:layout_height="wrap_content"
+				 	    android:text="Conn:"
+				 	    android:textAppearance="?android:attr/textAppearanceSmall" />
+	                
+	                <View
+					    android:layout_width="match_parent"
+					    android:layout_height="1dp"
+					    android:background="@android:color/darker_gray"/>
+					                
+	                <TextView
+				 	    android:id="@+id/textViewRPIMAC"
+				 	    android:layout_width="match_parent"
+				 	    android:layout_height="wrap_content"
+				 	    android:text="RPI MAC: "
+				 	    android:textAppearance="?android:attr/textAppearanceSmall" />
+	                
+	                <View
+					    android:layout_width="match_parent"
+					    android:layout_height="1dp"
+					    android:background="@android:color/darker_gray"/>
+	                
+	                <TextView
+				 	    android:id="@+id/textViewRPIName"
+				 	    android:layout_width="match_parent"
+				 	    android:layout_height="wrap_content"
+				 	    android:text="RPI Name: "
+				 	    android:textAppearance="?android:attr/textAppearanceSmall" />
+	                
+	                <View
+					    android:layout_width="match_parent"
+					    android:layout_height="1dp"
+					    android:background="@android:color/darker_gray"/>
+	                
+	                <TextView
+				 	    android:id="@+id/textViewStatus"
+				 	    android:layout_width="match_parent"
+				 	    android:layout_height="wrap_content"
+				 	    android:text="Status: "
+				 	    android:textAppearance="?android:attr/textAppearanceSmall" />
+	                
+	   	    	</LinearLayout>
+   	    	</ScrollView>
+
+            <LinearLayout
+	            android:layout_width="0dp"
+		   	    android:layout_height="match_parent"
+		   	    android:orientation="vertical"
+		   	    android:layout_weight="1">
+
+				<ImageButton
+					android:id="@+id/buttonConnect"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:background="@null"
+					android:onClick="autoConnect"
+					android:scaleType="centerInside"
+					android:src="@drawable/connect1" />
+                
+   	    	</LinearLayout>
+        </LinearLayout>
+
+	</LinearLayout>
+
+</LinearLayout>
+

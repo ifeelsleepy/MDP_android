@@ -99,9 +99,7 @@ public class BluetoothCommunication extends Activity {
 
     }
 
-    /*Activity LifeCycle
-     *
-     */
+    
 
     @Override
     protected void onStart(){

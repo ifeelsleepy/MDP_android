@@ -1,0 +1,210 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:focusableInTouchMode="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+   	android:paddingLeft="16dp"
+   	android:paddingRight="16dp"
+   	android:paddingTop="16dp"
+   	android:orientation="vertical"
+    tools:context="com.example.mdpandroidapp.BluetoothCommunication" >
+        
+    <TextView
+        android:id="@+id/text_comm_status"
+       	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:text="Display Bluetooth Connection State here" />
+    
+	<ScrollView
+      	android:layout_width="match_parent"
+   		android:layout_height="wrap_content">
+   		
+	    <LinearLayout
+	        android:layout_width="match_parent"
+   			android:layout_height="wrap_content"
+   			android:orientation="vertical">
+        
+	        <LinearLayout
+	            android:layout_width="match_parent"
+   				android:layout_height="wrap_content"
+   				android:orientation="horizontal">
+	            
+	            <EditText 
+	                android:id="@+id/edit_text01"
+	                android:layout_width="0dp"
+   					android:layout_height="wrap_content"
+   					android:layout_weight="5"
+	            	android:inputType="text"/>
+	            	
+         		<Button
+         		    android:id="@+id/button_send01"
+	                android:layout_width="0dp"
+   					android:layout_height="wrap_content"
+   					android:layout_weight="1"
+   					android:text=">>"
+   					android:onClick="onSendClick"/>
+	        </LinearLayout>
+        
+	        <LinearLayout
+	            android:layout_width="match_parent"
+   				android:layout_height="wrap_content"
+   				android:orientation="horizontal">
+	            
+	            <EditText 
+	                android:id="@+id/edit_text02"
+	                android:layout_width="0dp"
+   					android:layout_height="wrap_content"
+   					android:layout_weight="5"
+	            	android:inputType="text"/>
+	            	
+         		<Button
+         		    android:id="@+id/button_send02"
+	                android:layout_width="0dp"
+   					android:layout_height="wrap_content"
+   					android:layout_weight="1"
+   					android:text=">>"
+   					android:onClick="onSendClick"/>
+	        </LinearLayout>
+	        
+	        <View
+			    android:layout_width="match_parent"
+			    android:layout_height="3dp"
+			    android:background="@android:color/darker_gray"/>
+	        
+	        <LinearLayout
+	            android:layout_width="match_parent"
+   				android:layout_height="wrap_content"
+   				android:orientation="horizontal">
+	            
+	            <EditText 
+	                android:id="@+id/edit_text03"
+	                android:layout_width="0dp"
+   					android:layout_height="wrap_content"
+   					android:layout_weight="5"
+	            	android:inputType="text"/>
+	            	
+         		<Button
+         		    android:id="@+id/button_send03"
+	                android:layout_width="0dp"
+   					android:layout_height="wrap_content"
+   					android:layout_weight="1"
+   					android:text=">>"
+   					android:onClick="onSendClick"/>
+	        </LinearLayout>
+	        
+	        <View
+			    android:layout_width="match_parent"
+			    android:layout_height="3dp"
+			    android:background="@android:color/darker_gray"/>
+	        
+	        <LinearLayout
+	            android:layout_width="match_parent"
+   				android:layout_height="wrap_content"
+   				android:orientation="horizontal">
+	            
+	            <EditText 
+	                android:id="@+id/edit_text04"
+	                android:layout_width="0dp"
+   					android:layout_height="wrap_content"
+   					android:layout_weight="5"
+	            	android:inputType="text"/>
+	            	
+         		<Button
+         		    android:id="@+id/button_send04"
+	                android:layout_width="0dp"
+   					android:layout_height="wrap_content"
+   					android:layout_weight="1"
+   					android:text=">>"
+   					android:onClick="onSendClick"/>
+	        </LinearLayout>
+	        
+	        <View
+			    android:layout_width="match_parent"
+			    android:layout_height="3dp"
+			    android:background="@android:color/darker_gray"/>
+	        
+	        <LinearLayout
+	            android:layout_width="match_parent"
+   				android:layout_height="wrap_content"
+   				android:orientation="horizontal">
+	            
+	            <EditText 
+	                android:id="@+id/edit_text05"
+	                android:layout_width="0dp"
+   					android:layout_height="wrap_content"
+   					android:layout_weight="5"
+	            	android:inputType="text"/>
+	            	
+         		<Button
+         		    android:id="@+id/button_send05"
+	                android:layout_width="0dp"
+   					android:layout_height="wrap_content"
+   					android:layout_weight="1"
+   					android:text=">>"
+   					android:onClick="onSendClick"/>
+	        </LinearLayout>
+	        
+	        <View
+			    android:layout_width="match_parent"
+			    android:layout_height="3dp"
+			    android:background="@android:color/darker_gray"/>
+	        
+	        <LinearLayout
+	            android:layout_width="match_parent"
+   				android:layout_height="wrap_content"
+   				android:orientation="horizontal">
+	            
+	            <EditText 
+	                android:id="@+id/edit_text06"
+	                android:layout_width="0dp"
+   					android:layout_height="wrap_content"
+   					android:layout_weight="5"
+	            	android:inputType="text"/>
+	            	
+         		<Button
+         		    android:id="@+id/button_send06"
+	                android:layout_width="0dp"
+   					android:layout_height="wrap_content"
+   					android:layout_weight="1"
+   					android:text=">>"
+   					android:onClick="onSendClick"/>
+	        </LinearLayout>
+	        
+	        <View
+			    android:layout_width="match_parent"
+			    android:layout_height="3dp"
+			    android:background="@android:color/darker_gray"/>
+	        
+	        <Button
+	        	android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="Save Text to DB"
+				android:onClick="onSaveTextDBClick"/>
+	        
+	        <View
+	    		android:layout_width="match_parent"
+	    		android:layout_height="3dp"
+	    		android:background="@android:color/darker_gray"/>
+	        
+	        <Button
+	        	android:layout_width="100dp"
+				android:layout_height="wrap_content"
+				android:layout_gravity="start"
+				android:text="Back"
+				android:onClick="onCommBackClick"/>
+	        
+	        <View
+	    		android:layout_width="match_parent"
+	    		android:layout_height="3dp"
+	    		android:background="@android:color/darker_gray"/>
+	        
+	        <TextView 
+	            android:id="@+id/text_comm_debug"
+	            android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="Display debug message here"/>
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

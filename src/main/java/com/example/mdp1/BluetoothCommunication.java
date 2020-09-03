@@ -24,10 +24,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 public class BluetoothCommunication extends Activity {
-  
-      //for logging purpose
+
+    //for logging purpose
     private String logMessage = "";
     private TextView debugView;
     private TextView connectionStatusText;
@@ -99,7 +98,9 @@ public class BluetoothCommunication extends Activity {
 
     }
 
-    
+    /*Activity LifeCycle
+     *
+     */
 
     @Override
     protected void onStart(){
@@ -335,4 +336,3 @@ public class BluetoothCommunication extends Activity {
     };
 
 }
-

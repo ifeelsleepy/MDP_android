@@ -886,15 +886,21 @@ public class GridMap extends View {
 
     public JSONObject processAlgoMsg(String message) throws JSONException {
         showLog("Algo message --- " + message);
-        char msgType = message.charAt(0);
-        String msg = message.substring(2);
+        String[] msgParts = message.split(":");
+
+        if (msgParts.length != 2) {
+            throw new JSONException("Unable to process algo ms");
+        }
+
+        String msgType = msgParts[0];
+        String msg = msgParts[1];
         int x, y;
         JSONArray infoJsonArray;
         JSONObject fullJson = new JSONObject();
 
         switch (msgType) {
             // Move
-            case 'M':
+            case "M":
                 String[] msgStrs = msg.split(" ");
 
                 String directionStr = msgStrs[2];
@@ -925,7 +931,7 @@ public class GridMap extends View {
                 break;
 
             // MDF
-            case 'D':
+            case "D":
                 String[] mdfStrs = msg.split(",");
 
                 String hexStringExplored = mdfStrs[0];

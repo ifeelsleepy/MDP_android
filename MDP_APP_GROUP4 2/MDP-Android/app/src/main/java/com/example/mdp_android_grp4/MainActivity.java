@@ -371,6 +371,22 @@ public class MainActivity extends AppCompatActivity {
                 showLog("Adding Image Failed");
             }
 
+            if (message.substring(0, 2) == "I:") {
+                String msg = message.substring(2);
+                String[] msgStrs = msg.split(" ");
+
+                String position = msgStrs[0];
+                String[] posStrs = position.split(",");
+                int x = Integer.parseInt(posStrs[0]);
+                int y = 18 - Integer.parseInt(posStrs[1]);
+
+                int imageId = Integer.parseInt(msgStrs[1]);
+
+                gridMap.drawImageNumberCell(x, y, imageId);
+                GridMap.setObstacleCoord(x + 1, y+1);
+                showLog("Image Added for index: " + x + "," + y);
+            }
+
             if (gridMap.getAutoUpdate() || MapTabFragment.manualUpdateRequest) {
                 try {
                     gridMap.setReceivedJsonObject(new JSONObject(message));

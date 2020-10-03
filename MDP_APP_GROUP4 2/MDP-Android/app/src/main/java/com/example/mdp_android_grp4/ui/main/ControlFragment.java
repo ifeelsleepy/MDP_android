@@ -152,10 +152,9 @@ public class ControlFragment extends Fragment implements SensorEventListener {
                     if (gridMap.getValidPosition()){
                         updateStatus("moving forward");
                         //to be changed to M:1
-                        MainActivity.printMessage("M:F");}
+                        MainActivity.printMessage("M:1");}
                     else
                         updateStatus("Unable to move forward");
-
                 }
                 else
                     updateStatus("Please press 'STARTING POINT'");
@@ -334,7 +333,7 @@ public class ControlFragment extends Fragment implements SensorEventListener {
             @Override
             public void onClick(View v) {
                 showLog("Clicked Calibrate Button");
-                MainActivity.printMessage("SS|");
+                MainActivity.printMessage("C");
                 MapTabFragment.manualUpdateRequest = true;
                 showLog("Exiting Calibrate Button");
             }

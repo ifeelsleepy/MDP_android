@@ -367,6 +367,10 @@ public class GridMap extends View {
         }
         if (this.getStartCoordStatus())
             this.setCurCoord(col, row, direction);
+
+        //below
+        MainActivity.printMessage("sendArena");
+        //
         showLog("Exiting setStartCoord");
     }
 
@@ -602,6 +606,8 @@ public class GridMap extends View {
                             for (int y = startCoord[1] - 1; y <= startCoord[1] + 1; y++)
                                 cells[x][y].setType("unexplored");
                     }
+
+
                 }
                 else
                     canDrawRobot = true;
@@ -815,9 +821,9 @@ public class GridMap extends View {
                     infoJsonArray = mapInformation.getJSONArray("robotPosition");
 //                    infoJsonObject = infoJsonArray.getJSONObject(0);
 
-                    for (int row = ROW - 1; row >= 0; row--)
+                   /* for (int row = ROW - 1; row >= 0; row--)
                         for (int col = 1; col <= COL; col++)
-                            cells[col][row].setType("unexplored");
+                            cells[col][row].setType("unexplored");*/
 
                     String direction;
                     if (infoJsonArray.getInt(2) == 90) {
@@ -927,7 +933,21 @@ public class GridMap extends View {
                 infoJsonArray.put(x);
                 infoJsonArray.put(y);
                 infoJsonArray.put(direction);
+                //below one
+                /*ArrayList<int[]> obstacleCoord = this.getObstacleCoord();
+                JSONArray obJsonArray = new JSONArray();
+
+                for(int i = 0; i < obstacleCoord.size(); i++) {
+                    JSONObject infoJsonObject = new JSONObject();
+                    infoJsonObject.put("x", obstacleCoord.get(i)[0]);
+                    infoJsonObject.put("y", obstacleCoord.get(i)[1]);
+
+                    obJsonArray.put(infoJsonObject);
+                }
+                fullJson.put("obstacle", obJsonArray);*/
+                //
                 fullJson.put("robotPosition", infoJsonArray);
+
                 break;
 
             // MDF

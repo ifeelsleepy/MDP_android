@@ -211,6 +211,7 @@ public class MainActivity extends AppCompatActivity {
         showLog(message);
         editor.putString("message", CommsFragment.getMessageReceivedTextView().getText() + "\n" + message);
         editor.commit();
+
         refreshMessageReceived();
         showLog("Exiting printMessage");
     }
@@ -389,6 +390,8 @@ public class MainActivity extends AppCompatActivity {
 
             if (gridMap.getAutoUpdate() || MapTabFragment.manualUpdateRequest) {
                 try {
+                    //here
+
                     gridMap.setReceivedJsonObject(new JSONObject(message));
                     gridMap.updateMapInformation();
                     MapTabFragment.manualUpdateRequest = false;

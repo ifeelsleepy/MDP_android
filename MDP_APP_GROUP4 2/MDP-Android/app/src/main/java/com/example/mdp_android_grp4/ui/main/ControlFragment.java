@@ -227,6 +227,7 @@ public class ControlFragment extends Fragment implements SensorEventListener {
                 ToggleButton exploreToggleBtn = (ToggleButton) v;
                 if (exploreToggleBtn.getText().equals("EXPLORE")) {
                     showToast("Exploration timer stop!");
+                    MainActivity.printMessage("Q");
                     robotStatusTextView.setText("Exploration Stopped");
                     timerHandler.removeCallbacks(timerRunnableExplore);
                 }
@@ -251,6 +252,7 @@ public class ControlFragment extends Fragment implements SensorEventListener {
                 ToggleButton fastestToggleBtn = (ToggleButton) v;
                 if (fastestToggleBtn.getText().equals("FASTEST")) {
                     showToast("Fastest timer stop!");
+                    MainActivity.printMessage("Q");
                     robotStatusTextView.setText("Fastest Path Stopped");
                     timerHandler.removeCallbacks(timerRunnableFastest);
                 }

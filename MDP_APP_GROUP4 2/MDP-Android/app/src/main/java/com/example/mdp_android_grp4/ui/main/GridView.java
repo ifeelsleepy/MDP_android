@@ -256,16 +256,16 @@ public class GridView extends View {
             int row = convertRow(Integer.parseInt(arrowCoord.get(i)[1]));
             rect = new RectF(col * cellSize, row * cellSize, (col + 1) * cellSize, (row + 1) * cellSize);
             switch (arrowCoord.get(i)[2]) {
-                case "up":
+                case "N":
                     arrowBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_arrow_up);
                     break;
-                case "right":
+                case "E":
                     arrowBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_arrow_right);
                     break;
-                case "down":
+                case "S":
                     arrowBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_arrow_down);
                     break;
-                case "left":
+                case "W":
                     arrowBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_arrow_left);
                     break;
                 default:

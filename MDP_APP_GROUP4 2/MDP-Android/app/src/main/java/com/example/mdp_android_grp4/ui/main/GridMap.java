@@ -221,19 +221,19 @@ public class GridMap extends View {
             canvas.drawLine(cells[x][androidRowCoord - 1].startX - (cellSize / 30) + cellSize, cells[x][androidRowCoord - 1].startY, cells[x][androidRowCoord + 1].startX - (cellSize / 30) + cellSize, cells[x][androidRowCoord + 1].endY, robotColor);
 
         switch (this.getRobotDirection()) {
-            case "up":
+            case "N":
                 canvas.drawLine(cells[curCoord[0] - 1][androidRowCoord + 1].startX, cells[curCoord[0] - 1][androidRowCoord + 1].endY, (cells[curCoord[0]][androidRowCoord - 1].startX + cells[curCoord[0]][androidRowCoord - 1].endX) / 2, cells[curCoord[0]][androidRowCoord - 1].startY, blackPaint);
                 canvas.drawLine((cells[curCoord[0]][androidRowCoord - 1].startX + cells[curCoord[0]][androidRowCoord - 1].endX) / 2, cells[curCoord[0]][androidRowCoord - 1].startY, cells[curCoord[0] + 1][androidRowCoord + 1].endX, cells[curCoord[0] + 1][androidRowCoord + 1].endY, blackPaint);
                 break;
-            case "down":
+            case "S":
                 canvas.drawLine(cells[curCoord[0] - 1][androidRowCoord - 1].startX, cells[curCoord[0] - 1][androidRowCoord - 1].startY, (cells[curCoord[0]][androidRowCoord + 1].startX + cells[curCoord[0]][androidRowCoord + 1].endX) / 2, cells[curCoord[0]][androidRowCoord + 1].endY, blackPaint);
                 canvas.drawLine((cells[curCoord[0]][androidRowCoord + 1].startX + cells[curCoord[0]][androidRowCoord + 1].endX) / 2, cells[curCoord[0]][androidRowCoord + 1].endY, cells[curCoord[0] + 1][androidRowCoord - 1].endX, cells[curCoord[0] + 1][androidRowCoord - 1].startY, blackPaint);
                 break;
-            case "right":
+            case "E":
                 canvas.drawLine(cells[curCoord[0] - 1][androidRowCoord - 1].startX, cells[curCoord[0] - 1][androidRowCoord - 1].startY, cells[curCoord[0] + 1][androidRowCoord].endX, cells[curCoord[0] + 1][androidRowCoord - 1].endY + (cells[curCoord[0] + 1][androidRowCoord].endY - cells[curCoord[0] + 1][androidRowCoord - 1].endY) / 2, blackPaint);
                 canvas.drawLine(cells[curCoord[0] + 1][androidRowCoord].endX, cells[curCoord[0] + 1][androidRowCoord - 1].endY + (cells[curCoord[0] + 1][androidRowCoord].endY - cells[curCoord[0] + 1][androidRowCoord - 1].endY) / 2, cells[curCoord[0] - 1][androidRowCoord + 1].startX, cells[curCoord[0] - 1][androidRowCoord + 1].endY, blackPaint);
                 break;
-            case "left":
+            case "W":
                 canvas.drawLine(cells[curCoord[0] + 1][androidRowCoord - 1].endX, cells[curCoord[0] + 1][androidRowCoord - 1].startY, cells[curCoord[0] - 1][androidRowCoord].startX, cells[curCoord[0] - 1][androidRowCoord - 1].endY + (cells[curCoord[0] - 1][androidRowCoord].endY - cells[curCoord[0] - 1][androidRowCoord - 1].endY) / 2, blackPaint);
                 canvas.drawLine(cells[curCoord[0] - 1][androidRowCoord].startX, cells[curCoord[0] - 1][androidRowCoord - 1].endY + (cells[curCoord[0] - 1][androidRowCoord].endY - cells[curCoord[0] - 1][androidRowCoord - 1].endY) / 2, cells[curCoord[0] + 1][androidRowCoord + 1].endX, cells[curCoord[0] + 1][androidRowCoord + 1].endY, blackPaint);
                 break;
@@ -504,16 +504,16 @@ public class GridMap extends View {
                 int row = convertRow(Integer.parseInt(arrowCoord.get(i)[1]));
                 rect = new RectF(col * cellSize, row * cellSize, (col + 1) * cellSize, (row + 1) * cellSize);
                 switch (arrowCoord.get(i)[2]) {
-                    case "up":
+                    case "N":
                         arrowBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_arrow_up);
                         break;
-                    case "right":
+                    case "E":
                         arrowBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_arrow_right);
                         break;
-                    case "down":
+                    case "S":
                         arrowBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_arrow_down);
                         break;
-                    case "left":
+                    case "W":
                         arrowBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_arrow_left);
                         break;
                     default:
@@ -615,17 +615,17 @@ public class GridMap extends View {
                 startCoordStatus = false;
                 String direction = getRobotDirection();
                 if(direction.equals("None")) {
-                    direction = "up";
+                    direction = "N";
                 }
                 try {
                     int directionInt = 0;
-                    if(direction.equals("up")){
+                    if(direction.equals("N")){
                         directionInt = 0;
-                    } else if(direction.equals("left")) {
+                    } else if(direction.equals("W")) {
                         directionInt = 3;
-                    } else if(direction.equals("right")) {
+                    } else if(direction.equals("E")) {
                         directionInt = 1;
-                    } else if(direction.equals("down")) {
+                    } else if(direction.equals("S")) {
                         directionInt = 2;
                     }
                     // R:x,y N
@@ -827,13 +827,13 @@ public class GridMap extends View {
 
                     String direction;
                     if (infoJsonArray.getInt(2) == 90) {
-                        direction = "right";
+                        direction = "E";
                     } else if (infoJsonArray.getInt(2) == 180) {
-                        direction = "down";
+                        direction = "S";
                     } else if (infoJsonArray.getInt(2) == 270) {
-                        direction = "left";
+                        direction = "W";
                     } else {
-                        direction = "up";
+                        direction = "N";
                     }
                     this.setStartCoord(infoJsonArray.getInt(0), infoJsonArray.getInt(1));
                     this.setCurCoord(infoJsonArray.getInt(0)+2, convertRow(infoJsonArray.getInt(1))-1, direction);
@@ -997,101 +997,101 @@ public class GridMap extends View {
         String backupDirection = robotDirection;
 
         switch (robotDirection) {
-            case "up":
+            case "N":
                 switch (direction) {
-                    case "forward":
+                    case "N":
                         if (curCoord[1] != 19) {
                             curCoord[1] += 1;
                             validPosition = true;
                         }
                         break;
-                    case "right":
-                        robotDirection = "right";
+                    case "E":
+                        robotDirection = "E";
                         break;
-                    case "back":
+                    case "S":
                         if (curCoord[1] != 2) {
                             curCoord[1] -= 1;
                             validPosition = true;
                         }
                         break;
-                    case "left":
-                        robotDirection = "left";
+                    case "W":
+                        robotDirection = "W";
                         break;
                     default:
-                        robotDirection = "error up";
+                        robotDirection = "error N";
                         break;
                 }
                 break;
-            case "right":
+            case "E":
                 switch (direction) {
-                    case "forward":
+                    case "N":
                         if (curCoord[0] != 14) {
                             curCoord[0] += 1;
                             validPosition = true;
                         }
                         break;
-                    case "right":
-                        robotDirection = "down";
+                    case "E":
+                        robotDirection = "S";
                         break;
-                    case "back":
+                    case "S":
                         if (curCoord[0] != 2) {
                             curCoord[0] -= 1;
                             validPosition = true;
                         }
                         break;
-                    case "left":
-                        robotDirection = "up";
+                    case "W":
+                        robotDirection = "N";
                         break;
                     default:
-                        robotDirection = "error right";
+                        robotDirection = "error E";
                 }
                 break;
-            case "down":
+            case "S":
                 switch (direction) {
-                    case "forward":
+                    case "N":
                         if (curCoord[1] != 2) {
                             curCoord[1] -= 1;
                             validPosition = true;
                         }
                         break;
-                    case "right":
-                        robotDirection = "left";
+                    case "E":
+                        robotDirection = "E";
                         break;
-                    case "back":
+                    case "S":
                         if (curCoord[1] != 19) {
                             curCoord[1] += 1;
                             validPosition = true;
                         }
                         break;
-                    case "left":
-                        robotDirection = "right";
+                    case "W":
+                        robotDirection = "E";
                         break;
                     default:
-                        robotDirection = "error down";
+                        robotDirection = "error S";
                 }
                 break;
-            case "left":
+            case "W":
                 switch (direction) {
-                    case "forward":
+                    case "N":
                         if (curCoord[0] != 2) {
                             curCoord[0] -= 1;
                             validPosition = true;
                         }
                         break;
-                    case "right":
-                        robotDirection = "up";
+                    case "E":
+                        robotDirection = "N";
                         break;
-                    case "back":
+                    case "S":
                         if (curCoord[0] != 14) {
                             curCoord[0] += 1;
                             validPosition = true;
                         }
                         break;
-                    case "left":
-                        robotDirection = "down";
+                    case "W":
+                        robotDirection = "S";
                         break;
                     default:
-                        robotDirection = "error left";
+                        robotDirection = "error W";
                 }
                 break;
             default:
@@ -1118,7 +1118,7 @@ public class GridMap extends View {
         if (getValidPosition())
             this.setCurCoord(curCoord[0], curCoord[1], robotDirection);
         else {
-            if (direction.equals("forward") || direction.equals("back"))
+            if (direction.equals("N") || direction.equals("S"))
                 robotDirection = backupDirection;
             this.setCurCoord(oldCoord[0], oldCoord[1], robotDirection);
         }

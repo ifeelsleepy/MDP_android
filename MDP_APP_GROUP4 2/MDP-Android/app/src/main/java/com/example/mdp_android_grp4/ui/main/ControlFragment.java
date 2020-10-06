@@ -147,7 +147,7 @@ public class ControlFragment extends Fragment implements SensorEventListener {
                 if (gridMap.getAutoUpdate())
                     updateStatus("Please press 'MANUAL'");
                 else if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
-                    gridMap.moveRobot("forward");
+                    gridMap.moveRobot("N");
                     MainActivity.refreshLabel();
                     if (gridMap.getValidPosition()){
                         updateStatus("moving forward");
@@ -169,7 +169,7 @@ public class ControlFragment extends Fragment implements SensorEventListener {
                 if (gridMap.getAutoUpdate())
                     updateStatus("Please press 'MANUAL'");
                 else if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
-                    gridMap.moveRobot("right");
+                    gridMap.moveRobot("E");
                     MainActivity.refreshLabel();
                     MainActivity.printMessage("M:R");
                 }
@@ -186,7 +186,7 @@ public class ControlFragment extends Fragment implements SensorEventListener {
                 if (gridMap.getAutoUpdate())
                     updateStatus("Please press 'MANUAL'");
                 else if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
-                    gridMap.moveRobot("back");
+                    gridMap.moveRobot("S");
                     MainActivity.refreshLabel();
                     if (gridMap.getValidPosition()){
                         updateStatus("moving backward");
@@ -209,7 +209,7 @@ public class ControlFragment extends Fragment implements SensorEventListener {
                 if (gridMap.getAutoUpdate())
                     updateStatus("Please press 'MANUAL'");
                 else if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
-                    gridMap.moveRobot("left");
+                    gridMap.moveRobot("W");
                     MainActivity.refreshLabel();
                     updateStatus("turning left");
                     MainActivity.printMessage("M:L");
@@ -375,22 +375,22 @@ public class ControlFragment extends Fragment implements SensorEventListener {
         if(sensorFlag) {
             if (y < -2) {
                 showLog("Sensor Move Forward Detected");
-                gridMap.moveRobot("forward");
+                gridMap.moveRobot("N");
                 MainActivity.refreshLabel();
                 MainActivity.printMessage("M:F");
             } else if (y > 2) {
                 showLog("Sensor Move Backward Detected");
-                gridMap.moveRobot("back");
+                gridMap.moveRobot("S");
                 MainActivity.refreshLabel();
                 MainActivity.printMessage("M:B");
             } else if (x > 2) {
                 showLog("Sensor Move Left Detected");
-                gridMap.moveRobot("left");
+                gridMap.moveRobot("W");
                 MainActivity.refreshLabel();
                 MainActivity.printMessage("M:L");
             } else if (x < -2) {
                 showLog("Sensor Move Right Detected");
-                gridMap.moveRobot("right");
+                gridMap.moveRobot("E");
                 MainActivity.refreshLabel();
                 MainActivity.printMessage("M:R");
             }

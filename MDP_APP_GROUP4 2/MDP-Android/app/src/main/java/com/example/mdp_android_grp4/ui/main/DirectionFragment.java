@@ -47,6 +47,14 @@ public class DirectionFragment extends DialogFragment {
 
         if (savedInstanceState != null)
             direction = savedInstanceState.getString("direction");
+            if (direction.equals("up"))
+                direction = "N";
+            else if (direction.equals("right"))
+                direction = "E";
+            else if (direction.equals("left"))
+                direction = "W";
+            else if(direction.equals("down") || direction.equals("backward") || direction.equals("back"))
+                direction = "S";
 
 
         final Spinner spinner = (Spinner) rootView.findViewById(R.id.directionDropdownSpinner);
@@ -65,12 +73,12 @@ public class DirectionFragment extends DialogFragment {
                 String direction = spinner.getSelectedItem().toString();
                 if (direction.equals("up"))
                     direction  = "N";
-                else if (direction.equals("down"))
-                    direction = "S";
+                else if (direction.equals("right"))
+                    direction = "E";
                 else if (direction.equals("left"))
                     direction = "W";
                 else
-                    direction = "E";
+                    direction = "S";
                 editor.putString("direction",direction);
                 ((MainActivity)getActivity()).refreshDirection(direction);
                 Toast.makeText(getActivity(), "Saving direction...", Toast.LENGTH_SHORT).show();

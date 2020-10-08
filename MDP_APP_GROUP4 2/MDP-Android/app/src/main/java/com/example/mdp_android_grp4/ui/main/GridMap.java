@@ -777,9 +777,9 @@ public class GridMap extends View {
                     for (int j = 0; j < exploredString.length() - 4; j++) {
                         y = 19 - (j / 15);
                         x = 1 + j - ((19 - y) * 15);
-                        if ((String.valueOf(exploredString.charAt(j + 2))).equals("1") && !cells[x][y].type.equals("robot"))
+                        if ((String.valueOf(exploredString.charAt(j + 2))).equals("1"))
                             cells[x][y].setType("explored");
-                        else if ((String.valueOf(exploredString.charAt(j + 2))).equals("0") && !cells[x][y].type.equals("robot"))
+                        else if ((String.valueOf(exploredString.charAt(j + 2))).equals("0"))
                             cells[x][y].setType("unexplored");
                     }
 
@@ -892,99 +892,102 @@ public class GridMap extends View {
     }
 
     public JSONObject processAlgoMsg(String message) throws JSONException {
-        showLog("Algo message --- " + message);
-        String[] msgParts = message.split(":");
-
-        if (msgParts.length != 2) {
-            throw new JSONException("Unable to process algo ms");
-        }
-
-        String msgType = msgParts[0];
-        String msg = msgParts[1];
-        int x, y;
-        JSONArray infoJsonArray;
         JSONObject fullJson = new JSONObject();
+        try {
+            showLog("Algo message --- " + message);
+            String[] msgParts = message.split(":");
 
-        switch (msgType) {
-            // Move
-            case "M":
-                String[] msgStrs = msg.split(" ");
+            if (msgParts.length != 2) {
+                throw new JSONException("Unable to process algo ms");
+            }
 
-                String directionStr = msgStrs[2];
-                MainActivity.printMessage(directionStr);
-                int direction = 0;
-                switch (directionStr) {
-                    case "N":
-                        direction = 0;
-                        break;
-                    case "E":
-                        direction = 90;
-                        break;
-                    case "S":
-                        direction = 180;
-                        break;
-                    case "W":
-                        direction = 270;
-                        break;
-                }
-                String position = msgStrs[1];
-                String[] posStrs = position.split(",");
-                x = Integer.parseInt(posStrs[0]) - 1;
-                y = 18 - Integer.parseInt(posStrs[1]);
-                infoJsonArray = new JSONArray();
-                infoJsonArray.put(x);
-                infoJsonArray.put(y);
-                infoJsonArray.put(direction);
-                //below one
-                /*ArrayList<int[]> obstacleCoord = this.getObstacleCoord();
-                JSONArray obJsonArray = new JSONArray();
+            String msgType = msgParts[0];
+            String msg = msgParts[1];
+            int x, y;
+            JSONArray infoJsonArray;
 
-                for(int i = 0; i < obstacleCoord.size(); i++) {
-                    JSONObject infoJsonObject = new JSONObject();
-                    infoJsonObject.put("x", obstacleCoord.get(i)[0]);
-                    infoJsonObject.put("y", obstacleCoord.get(i)[1]);
 
-                    obJsonArray.put(infoJsonObject);
-                }
-                fullJson.put("obstacle", obJsonArray);*/
-                //
-                fullJson.put("robotPosition", infoJsonArray);
+            switch (msgType) {
+                // Move
+                case "M":
+                    String[] msgStrs = msg.split(" ");
 
-                break;
+                    String directionStr = msgStrs[2];
+                    MainActivity.printMessage(directionStr);
+                    int direction = 0;
+                    switch (directionStr) {
+                        case "N":
+                            direction = 0;
+                            break;
+                        case "E":
+                            direction = 90;
+                            break;
+                        case "S":
+                            direction = 180;
+                            break;
+                        case "W":
+                            direction = 270;
+                            break;
+                    }
+                    String position = msgStrs[1];
+                    String[] posStrs = position.split(",");
+                    x = Integer.parseInt(posStrs[0]) - 1;
+                    y = 18 - Integer.parseInt(posStrs[1]);
+                    infoJsonArray = new JSONArray();
+                    infoJsonArray.put(x);
+                    infoJsonArray.put(y);
+                    infoJsonArray.put(direction);
+                    //below one
+                    /*ArrayList<int[]> obstacleCoord = this.getObstacleCoord();
+                    JSONArray obJsonArray = new JSONArray();
 
-            // MDF
-            case "D":
-                String[] mdfStrs = msg.split(",");
+                    for(int i = 0; i < obstacleCoord.size(); i++) {
+                        JSONObject infoJsonObject = new JSONObject();
+                        infoJsonObject.put("x", obstacleCoord.get(i)[0]);
+                        infoJsonObject.put("y", obstacleCoord.get(i)[1]);
 
-                String hexStringExplored = mdfStrs[0];
-                BigInteger hexBigIntegerExplored = new BigInteger(hexStringExplored, 16);
-                String exploredString = hexBigIntegerExplored.toString(2);
-                showLog("processAlgoMsg.exploredString: " + exploredString);
+                        obJsonArray.put(infoJsonObject);
+                    }
+                    fullJson.put("obstacle", obJsonArray);*/
+                    //
+                    fullJson.put("robotPosition", infoJsonArray);
 
-                int length = 0;
+                    break;
 
-                for (int j = 0; j < exploredString.length() - 4; j++) {
-                    if ((String.valueOf(exploredString.charAt(j + 2))).equals("1"))
+                // MDF
+                case "D":
+                    String[] mdfStrs = msg.split(",");
+
+                    String hexStringExplored = mdfStrs[0];
+                    BigInteger hexBigIntegerExplored = new BigInteger(hexStringExplored, 16);
+                    String exploredString = hexBigIntegerExplored.toString(2);
+                    showLog("processAlgoMsg.exploredString: " + exploredString);
+
+                    int length = 0;
+
+                    for (int j = 0; j < exploredString.length() - 4; j++) {
+                        if ((String.valueOf(exploredString.charAt(j + 2))).equals("1"))
+                            length++;
+                    }
+                    while (length % 8 != 0)
                         length++;
-                }
-                while (length % 8 != 0)
-                    length++;
 
-                showLog("processAlgoMsg length: " + length);
+                    showLog("processAlgoMsg length: " + length);
 
-                String hexStringObstacle = mdfStrs[1];
-                showLog("processAlgoMsg hexStringObstacle: " + hexStringObstacle);
+                    String hexStringObstacle = mdfStrs[1];
+                    showLog("processAlgoMsg hexStringObstacle: " + hexStringObstacle);
 
-                JSONObject infoJsonObject = new JSONObject();
-                infoJsonObject.put("explored", hexStringExplored);
-                infoJsonObject.put("obstacle", hexStringObstacle);
-                infoJsonObject.put("length", length);
-                infoJsonArray = new JSONArray();
-                infoJsonArray.put(infoJsonObject);
-                fullJson.put("map", infoJsonArray);
-                break;
-        }
+                    JSONObject infoJsonObject = new JSONObject();
+                    infoJsonObject.put("explored", hexStringExplored);
+                    infoJsonObject.put("obstacle", hexStringObstacle);
+                    infoJsonObject.put("length", length);
+                    infoJsonArray = new JSONArray();
+                    infoJsonArray.put(infoJsonObject);
+                    fullJson.put("map", infoJsonArray);
+                    break;
 
+            }
+        } catch(Exception e){showLog("fml");}
         return fullJson;
     }
 

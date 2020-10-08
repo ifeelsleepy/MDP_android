@@ -28,6 +28,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -93,7 +94,7 @@ public class GridMap extends View {
         initMap();
         blackPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         obstacleColor.setColor(Color.BLACK);
-        robotColor.setColor(Color.GREEN);
+        robotColor.setColor(Color.WHITE);
         endColor.setColor(Color.RED);
         startColor.setColor(Color.CYAN);
         waypointColor.setColor(Color.RED);
@@ -910,6 +911,7 @@ public class GridMap extends View {
                 String[] msgStrs = msg.split(" ");
 
                 String directionStr = msgStrs[2];
+                MainActivity.printMessage(directionStr);
                 int direction = 0;
                 switch (directionStr) {
                     case "N":

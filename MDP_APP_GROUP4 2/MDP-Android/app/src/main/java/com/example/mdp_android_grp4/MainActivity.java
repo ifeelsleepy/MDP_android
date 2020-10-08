@@ -318,44 +318,43 @@ public class MainActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             String message = intent.getStringExtra("receivedMessage");
             showLog("receivedMessage: message --- " + message);
-
-            try {
-                if (message.length() > 7 && message.substring(2,6).equals("grid")) {
-                    String resultString = "";
-                    String amdString = message.substring(11,message.length()-2);
-                    showLog("amdString: " + amdString);
-                    BigInteger hexBigIntegerExplored = new BigInteger(amdString, 16);
-                    String exploredString = hexBigIntegerExplored.toString(2);
-
-                    while (exploredString.length() < 300)
-                        exploredString = "0" + exploredString;
-
-                    for (int i=0; i<exploredString.length(); i=i+15) {
-                        int j=0;
-                        String subString = "";
-                        while (j<15) {
-                            subString = subString + exploredString.charAt(j+i);
-                            j++;
-                        }
-                        resultString = subString + resultString;
-                    }
-                    hexBigIntegerExplored = new BigInteger(resultString, 2);
-                    resultString = hexBigIntegerExplored.toString(16);
-
-                    JSONObject amdObject = new JSONObject();
-                    amdObject.put("explored", "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-                    amdObject.put("length", amdString.length()*4);
-                    amdObject.put("obstacle", resultString);
-                    JSONArray amdArray = new JSONArray();
-                    amdArray.put(amdObject);
-                    JSONObject amdMessage = new JSONObject();
-                    amdMessage.put("map", amdArray);
-                    message = String.valueOf(amdMessage);
-                    showLog("Executed for AMD message, message: " + message);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                if (message.length() > 7 && message.substring(2,6).equals("grid")) {
+//                    String resultString = "";
+//                    String amdString = message.substring(11,message.length()-2);
+//                    showLog("amdString: " + amdString);
+//                    BigInteger hexBigIntegerExplored = new BigInteger(amdString, 16);
+//                    String exploredString = hexBigIntegerExplored.toString(2);
+//
+//                    while (exploredString.length() < 300)
+//                        exploredString = "0" + exploredString;
+//
+//                    for (int i=0; i<exploredString.length(); i=i+15) {
+//                        int j=0;
+//                        String subString = "";
+//                        while (j<15) {
+//                            subString = subString + exploredString.charAt(j+i);
+//                            j++;
+//                        }
+//                        resultString = subString + resultString;
+//                    }
+//                    hexBigIntegerExplored = new BigInteger(resultString, 2);
+//                    resultString = hexBigIntegerExplored.toString(16);
+//
+//                    JSONObject amdObject = new JSONObject();
+//                    amdObject.put("explored", "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+//                    amdObject.put("length", amdString.length()*4);
+//                    amdObject.put("obstacle", resultString);
+//                    JSONArray amdArray = new JSONArray();
+//                    amdArray.put(amdObject);
+//                    JSONObject amdMessage = new JSONObject();
+//                    amdMessage.put("map", amdArray);
+//                    message = String.valueOf(amdMessage);
+//                    showLog("Executed for AMD message, message: " + message);
+//                }
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
 
             try {
                 if (message.length() > 8 && message.substring(2,7).equals("image") && (Integer.parseInt(message.substring(14,15))!=0 && Integer.parseInt(message.substring(15,16))>=0 && Integer.parseInt(message.substring(15,16))<=5)) {

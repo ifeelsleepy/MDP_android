@@ -63,6 +63,14 @@ public class DirectionFragment extends DialogFragment {
             public void onClick(View view) {
                 showLog("Clicked saveBtn");
                 String direction = spinner.getSelectedItem().toString();
+                if (direction.equals("up"))
+                    direction  = "N";
+                else if (direction.equals("down"))
+                    direction = "S";
+                else if (direction.equals("left"))
+                    direction = "W";
+                else
+                    direction = "E";
                 editor.putString("direction",direction);
                 ((MainActivity)getActivity()).refreshDirection(direction);
                 Toast.makeText(getActivity(), "Saving direction...", Toast.LENGTH_SHORT).show();

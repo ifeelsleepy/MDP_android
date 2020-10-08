@@ -821,9 +821,9 @@ public class GridMap extends View {
                     infoJsonArray = mapInformation.getJSONArray("robotPosition");
 //                    infoJsonObject = infoJsonArray.getJSONObject(0);
 
-                   /* for (int row = ROW - 1; row >= 0; row--)
+                    for (int row = ROW - 1; row >= 0; row--)
                         for (int col = 1; col <= COL; col++)
-                            cells[col][row].setType("unexplored");*/
+                            cells[col][row].setType("unexplored");
 
                     String direction;
                     if (infoJsonArray.getInt(2) == 90) {

@@ -10,7 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19475e00-7d2b-405b-9ed7-668fb6a78fa9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mdp_android_grp4/ui/main/GridMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mdp_android_grp4/ui/main/GridMap.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

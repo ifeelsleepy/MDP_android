@@ -417,9 +417,9 @@ public class GridMap extends View {
         oldCoord[0] = oldCol;
         oldCoord[1] = oldRow;
         oldRow = this.convertRow(oldRow);
-        for (int x = oldCol - 1; x <= oldCol + 1; x++)
-            for (int y = oldRow - 1; y <= oldRow + 1; y++)
-                cells[x][y].setType("explored");
+//        for (int x = oldCol - 1; x <= oldCol + 1; x++)
+//            for (int y = oldRow - 1; y <= oldRow + 1; y++)
+//                cells[x][y].setType("explored");
         showLog("Exiting setOldRobotCoord");
     }
 
@@ -927,7 +927,7 @@ public class GridMap extends View {
                 }
                 String position = msgStrs[1];
                 String[] posStrs = position.split(",");
-                x = Integer.parseInt(posStrs[0]);
+                x = Integer.parseInt(posStrs[0]) - 1;
                 y = 18 - Integer.parseInt(posStrs[1]);
                 infoJsonArray = new JSONArray();
                 infoJsonArray.put(x);

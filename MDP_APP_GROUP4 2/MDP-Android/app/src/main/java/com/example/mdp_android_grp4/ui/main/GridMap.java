@@ -893,25 +893,24 @@ public class GridMap extends View {
 
     public JSONObject processAlgoMsg(String message) throws JSONException {
         JSONObject fullJson = new JSONObject();
-        try {
-            showLog("Algo message --- " + message);
-            String[] msgParts = message.split(":");
+        showLog("Algo message --- " + message);
+        String[] msgParts = message.split(":");
 
-            if (msgParts.length != 2) {
-                throw new JSONException("Unable to process algo ms");
-            }
+        if (msgParts.length != 2) {
+            throw new JSONException("Unable to process algo msg");
+        }
 
-            String msgType = msgParts[0];
-            String msg = msgParts[1];
-            int x, y;
-            JSONArray infoJsonArray;
+        String msgType = msgParts[0];
+        String msg = msgParts[1];
+        int x, y;
+        JSONArray infoJsonArray;
 
 
-            switch (msgType) {
-                // Move
-                case "M":
+        switch (msgType) {
+            // Move
+            case "M":
+                try {
                     String[] msgStrs = msg.split(" ");
-
                     String directionStr = msgStrs[2];
                     //MainActivity.printMessage(directionStr);
                     int direction = 0;
@@ -951,11 +950,14 @@ public class GridMap extends View {
                     fullJson.put("obstacle", obJsonArray);*/
                     //
                     fullJson.put("robotPosition", infoJsonArray);
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
+                break;
 
-                    break;
-
-                // MDF
-                case "D":
+            // MDF
+            case "D":
+                try {
                     String[] mdfStrs = msg.split(",");
 
                     String hexStringExplored = mdfStrs[0];
@@ -984,10 +986,12 @@ public class GridMap extends View {
                     infoJsonArray = new JSONArray();
                     infoJsonArray.put(infoJsonObject);
                     fullJson.put("map", infoJsonArray);
-                    break;
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
+                break;
 
-            }
-        } catch(Exception e){showLog("fml");}
+        }
         return fullJson;
     }
 

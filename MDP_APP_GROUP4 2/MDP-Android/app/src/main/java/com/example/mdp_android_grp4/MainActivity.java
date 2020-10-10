@@ -402,7 +402,7 @@ public class MainActivity extends AppCompatActivity {
                         gridMap.updateMapInformation();
                         MapTabFragment.manualUpdateRequest = false;
                         showLog("messageReceiver: try decode successful");
-                    } catch (JSONException e2){
+                    } catch (JSONException e2) {
                         showLog("messageReceiver: try decode unsuccessful");
                     }
                 }

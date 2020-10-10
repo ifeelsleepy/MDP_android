@@ -913,7 +913,7 @@ public class GridMap extends View {
                     String[] msgStrs = msg.split(" ");
 
                     String directionStr = msgStrs[2];
-                    MainActivity.printMessage(directionStr);
+                    //MainActivity.printMessage(directionStr);
                     int direction = 0;
                     switch (directionStr) {
                         case "N":
